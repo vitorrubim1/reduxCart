@@ -19,13 +19,17 @@ const cart: Reducer<ICartState> = (state = INITIAL_STATE, action) => {
     switch (action.type) {
       case "ADD_PRODUCT_TO_CART":
         {
-          const { product } = action.payload;
+          const { product } = action.payload; //produto que estou querendo adicionar
 
-          //imutabilidade, retorno oq já tenho e adiciono ao final oq recebo
+          const productInCartIndex = draft.items.findIndex(
+            (item) => item.product.id === product.id
+          ); //verifico se no array já tem o produto que estou recebendo
 
-          //agora o draft tem o mesmo formato do state, porém consigo adicionar um item como se não houvesse imutabilidade dando push
-
-          draft.items.push({ product, quantity: 1 });
+          if (productInCartIndex >= 0) {
+            draft.items[productInCartIndex].quantity++; // se já tiver só incremento a quantidade do item
+          } else {
+            draft.items.push({ product, quantity: 1 }); //o draft tem o mesmo formato do state, porém consigo adicionar um item como se não houvesse imutabilidade dando push
+          }
         }
 
         break;
