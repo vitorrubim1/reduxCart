@@ -12,5 +12,5 @@ export interface ICartItem {
 }
 
 export interface ICartState {
-  items: [];
+  items: ICartItem[];
 }
