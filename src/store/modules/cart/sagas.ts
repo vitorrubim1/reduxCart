@@ -15,6 +15,7 @@ import {
   addProductToCartRequest,
   addProductToCartSuccess,
 } from "./actions";
+import { ActionTypes } from "./types";
 
 //nesse arquivo estarão as configurações do saga, relacionado a esse módulo em si
 
@@ -54,5 +55,5 @@ function* checkProductStock({ payload }: CheckProductStockRequest) {
 
 export default all([
   //primeiro parâmetro: qual action quero ouvir, segundo: que função executarei caso a action seja chamada
-  takeLatest("ADD_PRODUCT_TO_CART_REQUEST", checkProductStock),
+  takeLatest(ActionTypes.addProductToCartRequest, checkProductStock),
 ]);

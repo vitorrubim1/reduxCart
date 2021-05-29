@@ -1,7 +1,7 @@
 import { Reducer } from "redux"; //esse Reducer é preciso quando for typar o módulo
 import produce from "immer";
 
-import { ICartState } from "./types";
+import { ActionTypes, ICartState } from "./types";
 
 /*
  * Reducer é o ponto central de um estado.
@@ -18,7 +18,7 @@ const INITIAL_STATE: ICartState = {
 const cart: Reducer<ICartState> = (state = INITIAL_STATE, action) => {
   return produce(state, (draft) => {
     switch (action.type) {
-      case "ADD_PRODUCT_TO_CART_SUCCESS": //só se caso de sucesso
+      case ActionTypes.addProductToCartSuccess: //só em caso de sucesso
         {
           const { product } = action.payload; //produto que estou querendo adicionar
 
@@ -35,7 +35,7 @@ const cart: Reducer<ICartState> = (state = INITIAL_STATE, action) => {
 
         break;
 
-      case "ADD_PRODUCT_TO_CART_FAILURE": {
+      case ActionTypes.addProductToCartFailure: {
         draft.failedStockCheck.push(action.payload.productId);
 
         break;
