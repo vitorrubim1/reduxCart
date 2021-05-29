@@ -7,8 +7,6 @@ const Cart: React.FC = () => {
   //primeiro faço a typagem de quais estados terei dentro de state, e dps das informações que eu quero
   const cart = useSelector<IState, ICartItem[]>((state) => state.cart.items);
 
-  console.log(cart);
-
   return (
     <table style={{ marginTop: "100px" }}>
       <thead>
