@@ -17,7 +17,7 @@ const INITIAL_STATE: ICartState = {
 const cart: Reducer<ICartState> = (state = INITIAL_STATE, action) => {
   return produce(state, (draft) => {
     switch (action.type) {
-      case "ADD_PRODUCT_TO_CART":
+      case "ADD_PRODUCT_TO_CART_SUCCESS": //só se caso de sucesso
         {
           const { product } = action.payload; //produto que estou querendo adicionar
 

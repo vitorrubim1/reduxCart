@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 
 import api from "../services/api";
 
-import { IProduct } from "../store/modules/cart/types";
 import CatalogItem from "./CatalogItem";
+
+import { IProduct } from "../store/modules/cart/types";
 
 const Catalog: React.FC = () => {
   const [catalogs, setCatalogs] = useState<IProduct[]>([]);

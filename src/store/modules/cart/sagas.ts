@@ -4,12 +4,12 @@ import { all, takeLatest, select } from "redux-saga/effects"; /*
 */
 import { IState } from "../..";
 
-import { addProductToCart } from "./actions";
+import { addProductToCartRequest } from "./actions";
 
 //nesse arquivo estarão as configurações do saga, relacionado a esse módulo em si
 
 //definindo o retorno da action que recebo por parâmetro na função checkProductStock
-type CheckProductStockRequest = ReturnType<typeof addProductToCart>;
+type CheckProductStockRequest = ReturnType<typeof addProductToCartRequest>;
 
 //verifica estoque do produto, e que por padrão tenho acesso a action e ao payload
 function* checkProductStock({ payload }: CheckProductStockRequest) {
@@ -28,5 +28,5 @@ function* checkProductStock({ payload }: CheckProductStockRequest) {
 
 export default all([
   //primeiro parâmetro: qual action quero ouvir, segundo: que função executarei caso a action seja chamada
-  takeLatest("ADD_PRODUCT_TO_CART", checkProductStock),
+  takeLatest("ADD_PRODUCT_TO_CART_REQUEST", checkProductStock),
 ]);
